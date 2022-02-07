@@ -10,8 +10,6 @@
 
 `pnpm install`安装依赖
 
-
-
 ## 项目结构
 
 ```
@@ -26,32 +24,45 @@
 ├── release.config.js
 ├── renovate.json
 ├── src
-│   ├── App.tsx # 页面代码写这，但是组件一般新建tsx。
-│   ├── main.tsx # toolbar代码写这
-│   └── utils.ts
+│   ├── App.tsx # 页面代码写这，但是组件一般新建tsx。
+│   ├── main.tsx # toolbar代码写这
+│   └── utils.ts
 ├── tsconfig.json
 └── vite.config.ts
 
 1 directory, 13 files
 ```
 
-
-
 ## 注册toolbar
+
+在`` main.tsx` ``
+
+```javascript
+  logseq.provideStyle(css`
+    .${openIconName} {
+      width: 18px;
+      height: 18px;
+      margin: 2px 0.4em 0 0.4em;
+      background-color: blue;
+      border-radius: 4px;
+      border: 1px solid #eee;
+    }
+  `);
+
+  logseq.App.registerUIItem("toolbar", {
+    key: "heatmap-plugin-open",
+    template: `
+    <a data-on-click="show">
+      <div class="${openIconName}"></div>
+    </a>
+  `,
+  });
+```
 
 
 
 ## 新建页面
 
-
-
 ### 页面位置
 
-
-
 ### 页数内容
-
-
-
-
-
