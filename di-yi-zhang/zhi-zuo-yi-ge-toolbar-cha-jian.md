@@ -35,7 +35,7 @@
 
 ## 注册toolbar
 
-在` main.tsx` 删掉原来的
+在 `main.tsx` 删掉原来的
 
 ```typescript
 logseq.provideStyle(css`
@@ -91,21 +91,19 @@ logseq.provideStyle(css`
 
 代码部分来源于`logseq-plugin-heatmap`项目。
 
-
-
 现在我们运行`pnpm install && pnpm run build`。在`logseq`中载入，就可以在`toolbar`上看到我们的`UIItem`了。
 
-15.png
+![](../.gitbook/assets/15.png)
 
 当我们点击该蓝色图标时，就是我们的`页面`了。
 
-17.png
+![](../.gitbook/assets/17.png)
 
 ## 新建页面
 
 我们的目标是制做一个`仪表盘`。上面显示着`logseq`里的相关信息。在界面上参考`logseq-plugin-heatmap`
 
-16.png
+![](../.gitbook/assets/16.png)
 
 ### 页面组件
 
@@ -180,15 +178,13 @@ export default App;
 
 现在点击`UIItem`时就有一个小窗口出现在`logseq`正中央(因为`items-center justify-center`)。当我们点击`logseq`任意位置，都可以关闭该窗口。
 
-18.gif
-
-
+![](../.gitbook/assets/18.gif)
 
 ### 调整页面位置
 
 如果我们想像`logseq-plugin-heatmap`一样，页面出现在toolbar正下面。我们就需要调整页面的位置。
 
-16。png
+![](../.gitbook/assets/16.png)
 
 修改`dashboard.css`
 
@@ -247,9 +243,7 @@ export const Dashboard = React.forwardRef<HTMLDivElement>(({}, ref) => {
 
 现在的效果：
 
-19.gif
-
-
+![](../.gitbook/assets/19.gif)
 
 ### 页数内容
 
@@ -284,9 +278,4 @@ export const Dashboard = React.forwardRef<HTMLDivElement>(({}, ref) => {
 
 现在当我们点成`UIItem`，我们就能看到我们一共拥有多少页了。
 
-20.png
-
-
-
-
-
+![](../.gitbook/assets/20.png)
