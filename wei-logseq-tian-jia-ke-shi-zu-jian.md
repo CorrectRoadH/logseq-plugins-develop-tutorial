@@ -161,9 +161,7 @@ logseq.ready(main).catch(console.error)
 
 效果：
 
-10.gif
-
-
+![](.gitbook/assets/10.gif)
 
 ## 组件参数持久化
 
@@ -186,8 +184,6 @@ logseq.ready(main).catch(console.error)
        align-content: center;
     }`)
 ```
-
-
 
 修改组件
 
@@ -212,9 +208,7 @@ logseq.ready(main).catch(console.error)
 
 **注意**：这里增加了`reset`，这个有什么用，后面会演示
 
-14.gif
-
-
+![](.gitbook/assets/14.gif)
 
 ### 事件改变block
 
@@ -240,10 +234,61 @@ logseq.ready(main).catch(console.error)
 
 效果：
 
-13.gif
-
-
+![](.gitbook/assets/13.gif)
 
 到了最后，我们再回来去看看之前设置的`reset`有什么用？如何一个组件的`reset`没有设置。那么点击的效果就会变成这样：
 
-12.gif
+![](.gitbook/assets/12.gif)
+
+项目受`logseq-plugin-samples`中的`logseq-pomodoro-timer启发，部分代码源于此。`
+
+最后附上`main.tsx完整代码`
+
+```
+import '@logseq/libs'
+
+async function main () {
+  logseq.provideModel({
+    async update(e: any) {
+      const { blockUuid } = e.dataset;
+      const block = await logseq.Editor.getBlock(blockUuid)
+      let newContent = block?.content;
+      if(block?.content?.indexOf("red") > -1) {
+        newContent = block?.content?.replace(`red`, `green`)
+      }else{
+        newContent = block?.content?.replace(`green`, `red`)
+      }
+      await logseq.Editor.updateBlock(blockUuid, newContent)
+    }
+  })
+  logseq.provideStyle(`
+    .hello {
+       border: 1px solid var(--ls-border-color); 
+       white-space: initial; 
+       padding: 2px 4px; 
+       border-radius: 4px; 
+       user-select: none;
+       cursor: default;
+       display: flex;
+       align-content: center;
+    }`)
+
+  logseq.App.onMacroRendererSlotted(({ slot, payload} ) => {
+    const [type,name,color] = payload.arguments
+    if (type !== ':hello') return
+    logseq.provideUI({
+      key: 'hello',
+      reset: true,
+      slot, template: `
+      <div style="background-color: ${ color }" class="hello" 
+      data-block-uuid="${payload.uuid}"
+      data-on-click="msg" >
+        hello! ${name}
+      </div>  
+     `,
+    })
+  })
+}
+
+logseq.ready(main).catch(console.error)
+```
