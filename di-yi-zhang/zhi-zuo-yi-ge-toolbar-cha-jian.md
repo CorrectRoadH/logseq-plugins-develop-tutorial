@@ -35,7 +35,35 @@
 
 ## 注册toolbar
 
-在`` main.tsx` ``
+在` main.tsx` 删掉原来的
+
+```typescript
+logseq.provideStyle(css`
+    div[data-injected-ui=${openIconName}-${pluginId}] {
+      display: inline-flex;
+      align-items: center;
+      opacity: 0.55;
+      font-weight: 500;
+      padding: 0 5px;
+      position: relative;
+    }
+
+    div[data-injected-ui=${openIconName}-${pluginId}]:hover {
+      opacity: 0.9;
+    }
+  `);
+
+  logseq.provideUI({
+    key: openIconName,
+    path: "#search",
+    template: `
+      <a data-on-click="show"
+         style="opacity: .6; display: inline-flex;">⚙️</a>
+    `,
+  })
+```
+
+替换成：
 
 ```javascript
   logseq.provideStyle(css`
@@ -50,7 +78,7 @@
   `);
 
   logseq.App.registerUIItem("toolbar", {
-    key: "heatmap-plugin-open",
+    key: "show-plugin-open",
     template: `
     <a data-on-click="show">
       <div class="${openIconName}"></div>
@@ -59,10 +87,206 @@
   });
 ```
 
+`logseq.App.registerUIItem`让我们向`toolbar`注册组件。
 
+代码部分来源于`logseq-plugin-heatmap`项目。
+
+
+
+现在我们运行`pnpm install && pnpm run build`。在`logseq`中载入，就可以在`toolbar`上看到我们的`UIItem`了。
+
+15.png
+
+当我们点击该蓝色图标时，就是我们的`页面`了。
+
+17.png
 
 ## 新建页面
 
-### 页面位置
+我们的目标是制做一个`仪表盘`。上面显示着`logseq`里的相关信息。在界面上参考`logseq-plugin-heatmap`
+
+16.png
+
+### 页面组件
+
+新建`dashboard.tsx`和`dashboard.css`。
+
+`dashborad.tsx`
+
+```typescript
+import React from "react";
+import "./dashboard.css"
+
+// eslint-disable-next-line react/display-name
+export const Dashboard = React.forwardRef<HTMLDivElement>(({}, ref) => {
+    return(
+        <div className="dashboard-root">
+            <div className="center">
+                <h1>logseq borad!!!</h1>
+            </div>
+        </div>
+    );
+});
+```
+
+`dashborad.css`
+
+```css
+.dashboard-root {
+    height: 8vh;
+    width: 16vh;
+    border-radius: 5%;
+    display: flex;
+    background-color: #e5e7eb;
+}
+
+.center{
+    display: flex;
+    margin: auto;
+}
+```
+
+修改`App.tsx`
+
+```typescript
+import React, { useRef } from "react";
+import { useAppVisible } from "./utils";
+import { Dashboard } from "./dashboard";
+
+function App() {
+  const innerRef = useRef<HTMLDivElement>(null);
+  const visible = useAppVisible();
+  if (visible) {
+    return (
+      <main
+        className="fixed inset-0 flex items-center justify-center"
+        onClick={(e) => {
+          if (!innerRef.current?.contains(e.target as any)) {
+            window.logseq.hideMainUI();
+          }
+        }}
+      >
+        <Dashboard ref={innerRef}  />
+      </main>
+    );
+  }
+  return null;
+}
+
+export default App;
+```
+
+效果：
+
+现在点击`UIItem`时就有一个小窗口出现在`logseq`正中央(因为`items-center justify-center`)。当我们点击`logseq`任意位置，都可以关闭该窗口。
+
+18.gif
+
+
+
+### 调整页面位置
+
+如果我们想像`logseq-plugin-heatmap`一样，页面出现在toolbar正下面。我们就需要调整页面的位置。
+
+16。png
+
+修改`dashboard.css`
+
+```css
+.dashboard-root {
+    position: absolute;
+    background-color: #e5e7eb;
+    display: flex;
+    width: 300px;
+    height: 80px;
+}
+
+.center{
+    display: flex;
+    margin: auto;
+}
+```
+
+修改`dashboard.tsx`
+
+```typescript
+import React from "react";
+import "./dashboard.css"
+import { useWindowSize } from "react-use";
+
+function useIconPosition() {
+    const windowSize = useWindowSize();
+    return React.useMemo(() => {
+        const right = windowSize.width - 10;
+        const bottom = 20;
+        return { right, bottom };
+    }, [windowSize]);
+}
+
+// eslint-disable-next-line react/display-name
+export const Dashboard = React.forwardRef<HTMLDivElement>(({}, ref) => {
+    const { bottom, right } = useIconPosition();
+    console.log(bottom, right);
+    return(
+        <div
+            ref={ref}
+            className="dashboard-root"
+             style={{ left: right - 400, top: bottom + 20 }}
+            >
+            <div className="center">
+                <h1>logseq borad!!!</h1>
+            </div>
+        </div>
+    );
+});
+```
+
+其中`useWindowSize`是用来获取`logseq`的窗口位置的。而`useIconPosition`是我从`logseq-plugin-heatmap`里扒来的。
+
+`main.tsx`中`<main>`的`className`修改为`className="absolute inset-0"`
+
+现在的效果：
+
+19.gif
+
+
 
 ### 页数内容
+
+现在我们就要为我们的`dashboard`添加真正"有用"的功能了。
+
+修改`dashboard.tsx`
+
+```typescript
+export const Dashboard = React.forwardRef<HTMLDivElement>(({}, ref) => {
+    const { bottom, right } = useIconPosition();
+
+    const [pageCount, setPageCount] = React.useState(0);
+    useEffect(()=>{
+        window.logseq.Editor.getAllPages().then(pages=>{
+            setPageCount(pages.length);
+        })
+    },[])
+
+    return(
+        <div
+            ref={ref}
+            className="dashboard-root"
+             style={{ left: right - 400, top: bottom + 20 }}
+            >
+            <div className="center">
+                <h1> 一共有 {pageCount} 个页面 </h1>
+            </div>
+        </div>
+    );
+});
+```
+
+现在当我们点成`UIItem`，我们就能看到我们一共拥有多少页了。
+
+20.png
+
+
+
+
+
