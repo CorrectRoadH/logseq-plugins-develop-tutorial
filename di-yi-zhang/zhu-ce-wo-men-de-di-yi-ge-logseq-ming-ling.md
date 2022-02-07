@@ -78,7 +78,7 @@ logseq.Editor.registerSlashCommand('juzi', async () => {
 
 其中`#+BEGIN_QUOTE something #+END_QUOTE`是`logseq`的一种引用格式，效果如下图。
 
-![](.gitbook/assets/3.png)
+![](../.gitbook/assets/3.png)
 
 修改`index.ts`
 
@@ -104,9 +104,9 @@ logseq.ready(main).catch(console.error)
 
 但是logseq好像有一个bug，还需要重启logseq，命令才能加载到命令列表中。我们重启`logseq`。
 
-![](.gitbook/assets/4.gif)
+![](../.gitbook/assets/4.gif)
 
-![](.gitbook/assets/5.gif)
+![](../.gitbook/assets/5.gif)
 
 成功调用该命令。
 
@@ -145,4 +145,4 @@ logseq.ready(main).catch(console.error)
 
 重新`npm build`并`reload`插件。
 
-![](.gitbook/assets/6.gif)
+![](../.gitbook/assets/6.gif)
