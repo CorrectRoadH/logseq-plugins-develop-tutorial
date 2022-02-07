@@ -1,4 +1,4 @@
-# 注册我们的第一个logseq命令
+# 创建第一个logseq命令
 
 ## 起步
 
@@ -112,7 +112,7 @@ logseq.ready(main).catch(console.error)
 
 ## 添加上随机获取句子能力
 
-调用随机句子api
+调用随机句子api。这里使用了`一言`的`api`。
 
 ```javascript
 import '@logseq/libs'
