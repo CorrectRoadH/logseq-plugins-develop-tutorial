@@ -240,11 +240,11 @@ logseq.ready(main).catch(console.error)
 
 ![](.gitbook/assets/12.gif)
 
-项目受`logseq-plugin-samples`中的`logseq-pomodoro-timer启发，部分代码源于此。`
+项目受`logseq-plugin-samples`中的`logseq-pomodoro-timer`启发，部分代码源于此。
 
-最后附上`main.tsx完整代码`
+最后附上`main.tsx`完整代码
 
-```
+```javascript
 import '@logseq/libs'
 
 async function main () {
