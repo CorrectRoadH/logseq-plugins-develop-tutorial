@@ -13,4 +13,7 @@
 ## 第二章
 
 * [datascript入门](di-er-zhang/datascript-ru-men.md)
-* [发布你的logseq插件到markplace](di-er-zhang/fa-bu-ni-de-logseq-cha-jian-dao-markplace.md)
+
+## 第三章
+
+* [发布你的logseq插件到markplace](di-san-zhang/fa-bu-ni-de-logseq-cha-jian-dao-markplace.md)

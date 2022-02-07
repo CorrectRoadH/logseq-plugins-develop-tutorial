@@ -1,4 +1,4 @@
-# Logseq 插件开发实战
+# README
 
 《21天精通 logseq 插件开发：从入门到放弃》
 
@@ -28,7 +28,7 @@
 
 为logseq添加内容组件 (已完成)
 
-制作一个toolbar插件  (已完成)
+制作一个toolbar插件 (已完成)
 
 通过命令显示窗口 (未完成)
 
@@ -42,4 +42,4 @@ datascript入门 (还没写)
 
 #### 第三章
 
-发布你的logseq插件到markplace (还没写)
+发布你的logseq插件到markplace (未完成)
