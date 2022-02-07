@@ -4,11 +4,9 @@
 
 在`logseq`中有一种特殊的语法`{{renderer }}`，我们可以通过插件实现把`{{renderer }}`渲染为特定的内容。
 
-比如在` logseq-plugin-link-preview`插件中`{{renderer :linkpreview,https://google.com}}`将会被显示为：
+比如在 `logseq-plugin-link-preview`插件中`{{renderer :linkpreview,https://google.com}}`将会被显示为：
 
-7.gif
-
-
+![](.gitbook/assets/7.gif)
 
 ## 注册渲染函数
 
@@ -60,15 +58,13 @@ logseq.ready(main).catch(console.error)
 
 `npm build`并载入`logseq`。
 
-8.gif
-
-
+![](.gitbook/assets/8.gif)
 
 ## 添加样式
 
 光有`html`实现好看的内容，我们还需要为其提供`css`样式。
 
-在`logseq`中，`  logseq.provideStyle`提供了这个功能。
+在`logseq`中， `logseq.provideStyle`提供了这个功能。
 
 ```
   logseq.provideStyle(`
@@ -121,16 +117,12 @@ async function main () {
 }
 
 logseq.ready(main).catch(console.error)
-
 ```
 
- 来看看效果：
+来看看效果：
 
-9.png
-
-
+![](.gitbook/assets/9.png)
 
 ## 事件
 
 还有内容还不够，我们还可以为该`html`添加上事件
-
