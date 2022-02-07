@@ -10,7 +10,7 @@
 
 ## 注册渲染函数
 
-我们可以用上一章的项目为基础，改一下`packget.json`中的项目内容。
+我们可以用上一章的项目为基础，改一下`package.json`中的项目内容。
 
 我们使用`onMacroRendererSlotted`去实现该功能
 
@@ -123,6 +123,127 @@ logseq.ready(main).catch(console.error)
 
 ![](.gitbook/assets/9.png)
 
-## 事件
+## 事件触发
 
 还有内容还不够，我们还可以为该`html`添加上事件
+
+我们继续制作，当点击`hello! logseq`时，logseq消息提示出`hello! logseq`。logseq中`logseq.provideModel`可以让我们自己编写事件。并可以通过`e.dataset`传参。
+
+事件函数：
+
+```javascript
+  logseq.provideModel({
+    msg(e: any) {
+      const {msg} = e.dataset;
+      logseq.App.showMsg(`Hello! ${msg}`);
+    }
+  })
+```
+
+组件函数：
+
+```javascript
+  logseq.App.onMacroRendererSlotted(({ slot, payload} ) => {
+    const [type,name] = payload.arguments
+    if (type !== ':hello') return
+    logseq.provideUI({
+      key: 'hello',
+      slot, template: `
+      <div class="hello" data-msg="${name}" data-on-click="msg" >
+        hello! ${name}
+      </div>  
+     `,
+    })
+  })
+```
+
+通过`data-xxx`我们可以向事件函数传参。
+
+效果：
+
+10.gif
+
+
+
+## 组件参数持久化
+
+如果组件中存在特别的值并改变组件样式。比如我们希望本来背景是红的。点击一下变成绿的，再次点击再变回来。
+
+### 修改组件增加背景颜色项
+
+修改css：去掉了上面写死的`backgrounp-color`。
+
+```javascript
+  logseq.provideStyle(`
+    .hello {
+       border: 1px solid var(--ls-border-color); 
+       white-space: initial; 
+       padding: 2px 4px; 
+       border-radius: 4px; 
+       user-select: none;
+       cursor: default;
+       display: flex;
+       align-content: center;
+    }`)
+```
+
+
+
+修改组件
+
+```javascript
+  logseq.App.onMacroRendererSlotted(({ slot, payload} ) => {
+    const [type,name,color] = payload.arguments
+    if (type !== ':hello') return
+    logseq.provideUI({
+      key: 'hello',
+      reset: true,
+      slot, template: `
+      <div style="background-color: ${ color }" class="hello" 
+      data-block-uuid="${payload.uuid}"
+      data-on-click="update" >
+        hello! ${name}
+      </div>  
+     `,
+    })
+  })
+}
+```
+
+**注意**：这里增加了`reset`，这个有什么用，后面会演示
+
+14.gif
+
+
+
+### 事件改变block
+
+我们现在来写我们的事件。
+
+```javascript
+  logseq.provideModel({
+    async update(e: any) {
+      const { blockUuid } = e.dataset;
+      const block = await logseq.Editor.getBlock(blockUuid)
+      let newContent = block?.content;
+      if(block?.content?.indexOf("red") > -1) {
+        newContent = block?.content?.replace(`red`, `green`)
+      }else{
+        newContent = block?.content?.replace(`green`, `red`)
+      }
+      await logseq.Editor.updateBlock(blockUuid, newContent)
+    }
+  })
+```
+
+我们先通过`logseq.Editor.getBlock`用传进来的`blockuuid`去得到`block`的内容。然后通过`logseq.Editor.updateBlock`去更新`block`的值。
+
+效果：
+
+13.gif
+
+
+
+到了最后，我们再回来去看看之前设置的`reset`有什么用？如何一个组件的`reset`没有设置。那么点击的效果就会变成这样：
+
+12.gif
