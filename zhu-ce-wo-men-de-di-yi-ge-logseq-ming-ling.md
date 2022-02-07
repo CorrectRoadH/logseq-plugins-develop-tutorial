@@ -1,8 +1,8 @@
 # 注册我们的第一个logseq命令
 
 ## 起步
-在`logseq`中有一系列命令是通过`/`调用的，比如`/link`、`/TODO`。现在我们为`logseq`制做一个随机引用一个句子的`命令插件`(通过`/`调用的)。
-我使用` logseq-emoji-picker`项目为基础，修改制做我们的`juzi`插件
+
+在`logseq`中有一系列命令是通过`/`调用的，比如`/link`、`/TODO`。现在我们为`logseq`制做一个随机引用一个句子的`命令插件`(通过`/`调用的)。 我使用 `logseq-emoji-picker`项目为基础，修改制做我们的`juzi`插件
 
 ## 环境搭建
 
@@ -58,13 +58,9 @@
 
 修改`name`、`description`、`description`、`id`等项。
 
-并删掉`    "@joeattardi/emoji-button": "^4.6.0"  `，因为我们不需要这个`依赖`。
-
-
+并删掉 `"@joeattardi/emoji-button": "^4.6.0"` ，因为我们不需要这个`依赖`。
 
 在该目录下运行`npm install`安装基本依赖
-
-
 
 ## 注册命令
 
@@ -82,9 +78,7 @@ logseq.Editor.registerSlashCommand('juzi', async () => {
 
 其中`#+BEGIN_QUOTE something #+END_QUOTE`是`logseq`的一种引用格式，效果如下图。
 
-3.png
-
-
+![](.gitbook/assets/3.png)
 
 修改`index.ts`
 
@@ -106,19 +100,15 @@ logseq.ready(main).catch(console.error)
 
 然后我们在项目目录中运行`npm install && npm build`。
 
-
-
 然后在`logseq`中的`plugins`中导入这个插件(需要开启开发者模式)。
 
-4.gif
+![](.gitbook/assets/4.gif)
 
 这里好像有一个bug，还需要重启logseq，命令才能加载到命令列表中。我们重启`logseq`
 
-5.gif
+![](.gitbook/assets/5.gif)
 
 成功调用该命令。
-
-
 
 ## 添加上随机获取句子能力
 
@@ -151,9 +141,8 @@ async function main () {
 }
 
 logseq.ready(main).catch(console.error)
-
 ```
 
 重新`npm build`并`reload`插件。
 
-6.gif
+![](.gitbook/assets/6.gif)
