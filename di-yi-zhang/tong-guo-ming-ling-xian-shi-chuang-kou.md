@@ -16,8 +16,6 @@
   )
 ```
 
-
-
 ## 写窗口
 
 新建`table.tsx`和`table.css`
@@ -179,9 +177,9 @@ export const Table = React.forwardRef<HTMLDivElement>(({}, ref) => {
 });
 ```
 
+![](../.gitbook/assets/21.gif)
 
-
-21.gif 现在工作的很好了
+现在工作的很好了
 
 ## 美化窗口
 
@@ -235,11 +233,9 @@ export const Table = React.forwardRef<HTMLDivElement>(({}, ref) => {
 }
 ```
 
-22.png
+![](../.gitbook/assets/22.png)
 
 虽然现在还是很丑，但是已经比之前好很多了。
-
-
 
 ## 注册快捷键
 
@@ -256,15 +252,8 @@ export const Table = React.forwardRef<HTMLDivElement>(({}, ref) => {
   }, false)
 ```
 
-
-
 `Enter`实现，在`table.tsx`中的`useEffect`加入
-
-
 
 未完成。。。
 
-
-
 现在就可以通过`esc`关闭窗口和`Enter`进行快速按按扭。
-

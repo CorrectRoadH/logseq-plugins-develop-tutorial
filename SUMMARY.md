@@ -1,6 +1,6 @@
 # Table of contents
 
-* [README](README.md)
+* [Logseq Plugins 开发实战](README.md)
 
 ## 第一章
 
