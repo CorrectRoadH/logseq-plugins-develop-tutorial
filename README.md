@@ -47,3 +47,11 @@ datascript入门 (还没写)
 别人的设计：`logseq-plugin-tabs`为例(还没写)
 
 发布你的logseq插件到markplace (未完成)
+
+
+
+### todo
+
+- [ ] 更新截图为记录按键的截图
+- [ ] 完成未完成部分
+- [ ] 把用到的代码上传至github

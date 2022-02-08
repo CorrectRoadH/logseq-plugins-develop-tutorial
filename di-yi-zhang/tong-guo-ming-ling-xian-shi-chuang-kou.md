@@ -1,8 +1,12 @@
 # 通过命令显示窗口
 
-这次我们来创建一个快捷创建`markdown table`的表格。当我们输入`/create table`时，显示出一个`table`窗口，填入我们想要的`row`和`col`就往`logseq`插入我们想要的`markdown`。
+这次我们来创建一个快捷创建`markdown`的表格。当我们输入`/create table`时，显示出一个`create table`窗口，填入我们想要的`row`和`col`就往`logseq`插入我们想要的`markdown`表格。
 
-这次项目同样基于`react`
+这次项目同样基于`logseq-plugin-template-react`
+
+## 搭建
+
+参考上一章
 
 ## 注册命令
 
