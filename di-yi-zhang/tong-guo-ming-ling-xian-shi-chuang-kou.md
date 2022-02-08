@@ -252,8 +252,55 @@ export const Table = React.forwardRef<HTMLDivElement>(({}, ref) => {
   }, false)
 ```
 
-`Enter`实现，在`table.tsx`中的`useEffect`加入
+23.gif
 
-未完成。。。
+图：通过`esc`关闭窗口
 
-现在就可以通过`esc`关闭窗口和`Enter`进行快速按按扭。
+
+
+`Enter`实现
+
+`main.tsx`
+
+```typescript
+  document.addEventListener('keydown', function (e) {
+    if (e.keyCode === 27) {
+      logseq.hideMainUI({ restoreEditingCursor: true })
+    }
+
+    if (e.keyCode === 13) {
+      // @ts-ignore
+      logseq.emit('table_enter_down', e)
+    }
+
+    e.stopPropagation()
+  }, false)
+```
+
+监听`Enter`事件。这里用到了`logseq`的`event`机制。通过`logseq.emit`提交事件。
+
+
+
+在`table.tsx`组件里监听`logseq`其它地方发来的可能的监听事件。
+
+这里之所以要`off`掉之前的事件，是因为有修改`row`或者`col`会挂载多个事件的。导致一按回车，触发多个事件。 
+
+```typescript
+    useEffect(()=>{
+        // @ts-ignore
+        window.logseq.off("table_enter_down");
+
+        // @ts-ignore
+        window.logseq.once("table_enter_down", ()=>{
+            insertContent(createTable(Number(row),Number(col)));
+        })
+    },[row, col])
+```
+
+
+
+24.gif
+
+
+
+现在就可以通过`esc`关闭窗口和`Enter`进行触发按扭了。
