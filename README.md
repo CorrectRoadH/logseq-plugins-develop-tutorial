@@ -34,12 +34,16 @@
 
 **第二章**
 
-适配logseq主题 (还没写)
+适配logseq主题 (未完成)
 
 datascript入门 (还没写)
 
 好的插件设计 (还没写)
 
 #### 第三章
+
+别人的设计：`logseq-plugin-heatmap`为例(还没写)
+
+别人的设计：`logseq-plugin-tabs`为例(还没写)
 
 发布你的logseq插件到markplace (未完成)
