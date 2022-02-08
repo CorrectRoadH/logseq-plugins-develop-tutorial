@@ -256,7 +256,7 @@ export const Table = React.forwardRef<HTMLDivElement>(({}, ref) => {
   }, false)
 ```
 
-![](../.gitbook/assets/23.gif)
+![通过ESC键关闭窗口](../.gitbook/assets/23.gif)
 
 图：通过`esc`关闭窗口
 
@@ -297,11 +297,9 @@ export const Table = React.forwardRef<HTMLDivElement>(({}, ref) => {
     },[row, col])
 ```
 
-![](../.gitbook/assets/24.gif)
+![通过Enter键代替按按扭](../.gitbook/assets/24.gif)
 
 现在就可以通过`esc`关闭窗口和`Enter`进行触发按扭了。
-
-
 
 ### 拓展
 
@@ -331,8 +329,6 @@ function useIconPosition() {
 }
 ```
 
-
-
 `logseq-emoji-picker`的实现
 
 ```typescript
@@ -355,4 +351,3 @@ function useIconPosition() {
     },
   )
 ```
-

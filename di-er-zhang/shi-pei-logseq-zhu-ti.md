@@ -70,10 +70,10 @@ function App() {
 }
 ```
 
-这里是`windi CSS`的语法。我们在`logseq`中看看效果。
+这里是`windi CSS`的语法。我们在`logseq`中看看效果，不同主题成功切换了不同的配色。
 
-25 
+![logse为dark时](../.gitbook/assets/26.png)
 
-26
+![logseq为light时](../.gitbook/assets/27.png)
 
 ps：遇到一些`windicss`中的颜色无法使用，目前还没有找到原因
