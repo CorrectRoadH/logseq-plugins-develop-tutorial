@@ -8,7 +8,7 @@
 * [创建第一个logseq命令](di-yi-zhang/zhu-ce-wo-men-de-di-yi-ge-logseq-ming-ling.md)
 * [为logseq添加内容组件](di-yi-zhang/wei-logseq-tian-jia-ke-shi-zu-jian.md)
 * [制作一个toolbar仪表盘](di-yi-zhang/zhi-zuo-yi-ge-toolbar-cha-jian.md)
-* [通过命令显示窗口](di-yi-zhang/tong-guo-ming-ling-xian-shi-chuang-kou.md)
+* [制作一个表格生成器](di-yi-zhang/tong-guo-ming-ling-xian-shi-chuang-kou.md)
 
 ## 第二章
 
