@@ -1,4 +1,4 @@
-# 通过命令显示窗口
+# 制作一个表格生成器
 
 这次我们来创建一个快捷创建`markdown`的表格。当我们输入`/create table`时，显示出一个`create table`窗口，填入我们想要的`row`和`col`就往`logseq`插入我们想要的`markdown`表格。
 
