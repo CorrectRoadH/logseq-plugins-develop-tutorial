@@ -10,7 +10,7 @@
 
 本书地址阅读：[点击阅读](https://a778917369.gitbook.io/21-nian-jing-tong-logseq-plugins-kai-fa-cong-ru-men-dao-fang-qi/)
 
-本书项目地址：\[点此参与]\([https://github.com/HXHL/logseq-plugins-develop-tutorial](https://github.com/HXHL/logseq-plugins-develop-tutorial))
+本书项目地址：[点此参与]([https://github.com/HXHL/logseq-plugins-develop-tutorial](https://github.com/HXHL/logseq-plugins-develop-tutorial))
 
 我是一个双链笔记的爱好者，尝试过`obsidian`和`logseq`。说实话`obsidian`的生态很好，插件也能在移动上正常的使用。但是做为程序员，天然的对`开源软件`有偏好。同时`logseq`在`链接`这个过程上做的比`obsidian`好很多。同时我更喜欢`logseq`通过`outline`的形式去组织信息，更有层次感。最后是个人审美，我确实认为`logseq`比`obsidian`更好看，就算算上第三方主题也是如此。
 
