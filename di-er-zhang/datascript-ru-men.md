@@ -33,34 +33,66 @@ datascript是一种`匹配`查询的语言,我们从最简单的语句开始，�
 
 `[?e :block/parent 50]`意思就是匹配所有`block`中`parent`是`50`的节点。在我们这里表里面，结果有两个，分别是`51`和`52`。那么这个`?e`就是`变量`，它现在的值是`51`、`52`。
 
-![我logseq上微积分是72，线代是73](../.gitbook/assets/29.png)
+<img src="../.gitbook/assets/29.png" alt="我logseq上微积分是72，线代是73" style="zoom:50%;" />
 
-`(pull 变量名 [*])`这个`方法`的作用是把`变量名`所对应的`content`显示出来：
+`(pull 变量名 [*])`这个`方法`的作用是把`变量名`所对应的`block`显示出来：
 
-![](../.gitbook/assets/30.png)
+<img src="../.gitbook/assets/30.png" style="zoom:50%;" />
+
+
+
+那我们假设现在logseq的库是这样
+
+| e-id | Attribute      | value    |
+| ---- | -------------- | -------- |
+| 50   | :block/marker  | TODO     |
+| 50   | :block/content | 学习英语 |
+| 51   | :block/marker  | TODO     |
+| 51   | :block/content | 学习数学 |
+| 52   | :block/marker  | DONE     |
+| 52   | :block/content | 学习语文 |
+
+看起来像这样
+
+31.png
+
+```
+ [:find (pull ?e [*]) 
+    :where
+     [?e :block/marker ?m]
+     [(contains? #{"TODO"} ?m)]]
+```
+
+当匹配条件一`[?e :block/marker ?m]`执行完时，`?e`的值有三个`50`、`51`、`52` 。同时`?m`的值有`TODO`和`DONE`两个。
+
+我们用第二个匹配条件`[(contains? #{"TODO"} ?m)]`这个`?m`是不是包括在`#{"TODO"}`其中。所以`?m`是`DONE`的`52`就被排除了。现在`?e`只有`50`和`51`。
+
+32.png
+
+
 
 ### Logseq block自带的属性
 
-| :Namespace/Attribute | 可能的值\|示例              |
-| -------------------- | --------------------- |
-| :block/uuid          |                       |
-| :block/parent        | 50                    |
-| :block/left          |                       |
-| :block/collapsed?    |                       |
-| :block/format        |                       |
-| :block/refs          |                       |
-| :block/\_refs        |                       |
-| :block/path-refs     |                       |
-| :block/tags          |                       |
-| :block/content       |                       |
-| :block/marker        | "DONE"、"TODO"、"LATER" |
-| :block/priority      |                       |
-| :block/properties    |                       |
-| :block/pre-block?    |                       |
-| :block/scheduled     |                       |
-| :block/deadline      |                       |
-| :block/repeated?     |                       |
-| :block/created-at    | 1644037172307         |
-| :block/updated-at    | 1644037172307         |
-| :block/file          |                       |
-| :block/heading-level |                       |
+| :Namespace/Attribute | 可能的值\|示例                   |
+| -------------------- | -------------------------------- |
+| :block/uuid          |                                  |
+| :block/parent        | 50                               |
+| :block/left          |                                  |
+| :block/collapsed?    |                                  |
+| :block/format        |                                  |
+| :block/refs          |                                  |
+| :block/\_refs        |                                  |
+| :block/path-refs     |                                  |
+| :block/tags          |                                  |
+| :block/content       |                                  |
+| :block/marker        | "DONE"、"TODO"、 "NOW" 、"LATER" |
+| :block/priority      |                                  |
+| :block/properties    |                                  |
+| :block/pre-block?    |                                  |
+| :block/scheduled     |                                  |
+| :block/deadline      |                                  |
+| :block/repeated?     |                                  |
+| :block/created-at    | 1644037172307                    |
+| :block/updated-at    | 1644037172307                    |
+| :block/file          |                                  |
+| :block/heading-level |                                  |
