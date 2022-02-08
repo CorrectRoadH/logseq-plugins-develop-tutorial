@@ -35,7 +35,7 @@
 
 ## 注册toolbar
 
-在 `main.tsx` 删掉原来的
+在 `main.tsx` 删掉原本的`logseq.provideUI`和`logseq.provideStyle`。
 
 ```typescript
 logseq.provideStyle(css`

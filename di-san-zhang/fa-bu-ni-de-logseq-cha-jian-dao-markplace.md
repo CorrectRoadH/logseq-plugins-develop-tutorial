@@ -19,8 +19,6 @@ fork这个repo。
 }
 ```
 
-
-
 然后`git add` `git commit` `git push`。
 
 然后在该页面的`pull requests`中请求合并你的`plugins`。
