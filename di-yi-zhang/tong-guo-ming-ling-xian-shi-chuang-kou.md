@@ -252,11 +252,9 @@ export const Table = React.forwardRef<HTMLDivElement>(({}, ref) => {
   }, false)
 ```
 
-23.gif
+![](../.gitbook/assets/23.gif)
 
 图：通过`esc`关闭窗口
-
-
 
 `Enter`实现
 
@@ -279,11 +277,9 @@ export const Table = React.forwardRef<HTMLDivElement>(({}, ref) => {
 
 监听`Enter`事件。这里用到了`logseq`的`event`机制。通过`logseq.emit`提交事件。
 
-
-
 在`table.tsx`组件里监听`logseq`其它地方发来的可能的监听事件。
 
-这里之所以要`off`掉之前的事件，是因为有修改`row`或者`col`会挂载多个事件的。导致一按回车，触发多个事件。 
+这里之所以要`off`掉之前的事件，是因为有修改`row`或者`col`会挂载多个事件的。导致一按回车，触发多个事件。
 
 ```typescript
     useEffect(()=>{
@@ -297,10 +293,6 @@ export const Table = React.forwardRef<HTMLDivElement>(({}, ref) => {
     },[row, col])
 ```
 
-
-
-24.gif
-
-
+![](../.gitbook/assets/24.gif)
 
 现在就可以通过`esc`关闭窗口和`Enter`进行触发按扭了。
