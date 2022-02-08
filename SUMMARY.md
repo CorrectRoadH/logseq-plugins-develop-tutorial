@@ -12,6 +12,7 @@
 
 ## 第二章
 
+* [适配logseq主题](di-er-zhang/shi-pei-logseq-zhu-ti.md)
 * [datascript入门](di-er-zhang/datascript-ru-men.md)
 
 ## 第三章
