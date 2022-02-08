@@ -10,7 +10,7 @@
 
 ## 注册命令
 
-在`main.tsx`
+`main.tsx`
 
 ```typescript
  logseq.Editor.registerSlashCommand(
@@ -28,7 +28,7 @@
 import React, {useEffect} from "react";
 import "./table.css"
 
-const createTable = (row:number, col:number)=>{
+const createTable = (row:number, col:number)=>{ // 生成markdown表格的内容
     let content = "|"
     let rowContent = "|"
 
@@ -55,9 +55,10 @@ const createTable = (row:number, col:number)=>{
     return content
 }
 
-const insertContent = async (content:string) =>{
+const insertContent = async (content:string) =>{ // 把内容插入到logseq
     window.logseq.hideMainUI({ restoreEditingCursor: true });
     await window.logseq.Editor.insertAtEditingCursor(content);
+    // 
 }
 
 // eslint-disable-next-line react/display-name,no-empty-pattern
@@ -102,7 +103,7 @@ export const Table = React.forwardRef<HTMLDivElement>(({}, ref) => {
 }
 ```
 
-`main.tsx`和上次基本一样，导入的文件变了而已
+`main.tsx`和上一章基本一样，导入的组件变了而已。
 
 ```typescript
 import React, { useRef } from "react";
@@ -133,7 +134,9 @@ function App() {
 export default App;
 ```
 
-## 让窗口出现在处
+现在已经能调出`create table`窗口了，但是窗口出现在`logseq`的左上角。我们要调整一下窗口出现的位置。
+
+## 让窗口出现在光标处
 
 这次我们希望它像`emoji-picker`一样工作。窗口在光标的地方。我们直接从那边扒代码。
 
@@ -149,6 +152,7 @@ export const Table = React.forwardRef<HTMLDivElement>(({}, ref) => {
     const [rect, setReact] = React.useState({top:0,left:0});
 
     useEffect( ()=>{
+        // 获取当前光标的位置
         window.logseq.Editor.getEditingCursorPosition().then((res)=>{
             // @ts-ignore
             const {left, top, rect} = res;
@@ -162,6 +166,7 @@ export const Table = React.forwardRef<HTMLDivElement>(({}, ref) => {
         <div
             ref={ref}
             className="table-root"
+              // 动态修改css，让位置与光标位置一致
              style={{ top: top + rect.top + 'px',
                  left: left + rect.left + 'px', }}
             >
@@ -181,13 +186,13 @@ export const Table = React.forwardRef<HTMLDivElement>(({}, ref) => {
 });
 ```
 
-![](../.gitbook/assets/21.gif)
+效果不错!
 
-现在工作的很好了
+![](../.gitbook/assets/21.gif)
 
 ## 美化窗口
 
-虽然现在一件插件的基本功能做到了，但是还是很丑。进行一番修改。
+虽然现在一个插件的基本功能做到了，但是还是很丑。我们进行一番修改。让窗口边框变的光滑，然后居中组件。
 
 ```html
             <div className="center">
@@ -241,11 +246,15 @@ export const Table = React.forwardRef<HTMLDivElement>(({}, ref) => {
 
 虽然现在还是很丑，但是已经比之前好很多了。
 
+## 
+
 ## 注册快捷键
 
 我们还希望能更方便一点。比如当我们按下`esc`时关闭窗口，按下`Enter`时就等于按下`insert`。
 
-`esc`实现，在`main.tsx`中加入
+### `esc`实现
+
+### 在`main.tsx`中加入`监听器`。
 
 ```typescript
   document.addEventListener('keydown', function (e) {
@@ -260,9 +269,9 @@ export const Table = React.forwardRef<HTMLDivElement>(({}, ref) => {
 
 图：通过`esc`关闭窗口
 
-`Enter`实现
+### `Enter`实现
 
-`main.tsx`
+修改`main.tsx`
 
 ```typescript
   document.addEventListener('keydown', function (e) {

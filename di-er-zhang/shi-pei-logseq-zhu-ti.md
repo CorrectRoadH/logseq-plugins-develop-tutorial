@@ -4,7 +4,11 @@ logseq有`light`和`dark`两种主题模式，如果我们要让我们的插件�
 
 ## 实现
 
-在`无框架`下的实现方式
+### 在`无框架`下的实现方式
+
+未完待续
+
+
 
 ### 在`logseq-plugin-template-react`下的实现方式
 
@@ -44,8 +48,8 @@ import { useAppVisible, useThemeMode } from "./utils";
 
 
 function App() {
-	...
-	const themeMode = useThemeMode();
+    ...
+    const themeMode = useThemeMode();
   ...
   <main
           className={`absolute inset-0 ${themeMode}`}
@@ -76,4 +80,4 @@ function App() {
 
 ![logseq为light时](../.gitbook/assets/27.png)
 
-ps：遇到一些`windicss`中的颜色无法使用，目前还没有找到原因
+ps：遇到一些`windicss`中的颜色无法使用，目前还没有找到原因。

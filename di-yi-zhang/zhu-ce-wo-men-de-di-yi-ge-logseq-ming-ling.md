@@ -2,7 +2,11 @@
 
 ## 起步
 
-在`logseq`中有一系列命令是通过`/`调用的，比如`/link`、`/TODO`。现在我们为`logseq`制做一个随机引用一个句子的`命令插件`。 我使用 `logseq-emoji-picker`项目为基础，修改制做我们的`juzi`插件
+在`logseq`中有一系列命令是通过`/`调用的，比如`/link`、`/TODO`。
+
+现在我们为`logseq`制做一个随机引用一个句子的`命令插件`。 我使用 `logseq-emoji-picker`项目为基础，修改制做我们的`juzi`插件。
+
+ 
 
 ## 环境搭建
 
@@ -62,17 +66,19 @@
 
 在该目录下运行`npm install`安装基本依赖
 
+## 
+
 ## 注册命令
 
 在`logseq`的插件中，我们通过`logseq.Editor.registerSlashCommand('命令名', 异步函数)`的方法向`logseq`注册命令。
 
 ```javascript
 logseq.Editor.registerSlashCommand('juzi', async () => {
-	await logseq.Editor.insertAtEditingCursor( # 向logseq光标所在位置插入内容
-	`#+BEGIN_QUOTE
-		hello!
-	 #+END_QUOTE`,
-	);
+    await logseq.Editor.insertAtEditingCursor( # 向logseq光标所在位置插入内容
+    `#+BEGIN_QUOTE
+        hello!
+     #+END_QUOTE`,
+    );
 })
 ```
 
@@ -86,29 +92,36 @@ logseq.Editor.registerSlashCommand('juzi', async () => {
 import '@logseq/libs'
 
 async function main () {
-	logseq.Editor.registerSlashCommand('juzi', async () => {
-		await logseq.Editor.insertAtEditingCursor(
-		`#+BEGIN_QUOTE
-			hello!
-		 #+END_QUOTE`,
-		);
-	})
+    logseq.Editor.registerSlashCommand('juzi', async () => {
+        //insertAtEditingCursor 这个函数是向logseq当前光标处插入传参的内容
+        await logseq.Editor.insertAtEditingCursor(
+        `#+BEGIN_QUOTE
+            hello!
+         #+END_QUOTE`,
+        );
+    })
 }
-  
+
 logseq.ready(main).catch(console.error)
 ```
 
-然后我们在项目目录中运行`npm install && npm build`。
+然后我们在项目目录中运行`npm install && npm build`。把我们的插件从源码变成能运行的东西!
+
+
 
 然后在`logseq`中的`plugins`中导入这个插件(需要开启开发者模式)。
 
-但是logseq好像有一个bug，还需要重启logseq，命令才能加载到命令列表中。我们重启`logseq`。
-
 ![](../.gitbook/assets/4.gif)
+
+
+
+**注意**但是`logseq 0.5.9`好像有一个bug，还需要重启logseq，命令才能加载到命令列表中。我重启一下`logseq`。
+
+现在可以成功触发命令了!
 
 ![](../.gitbook/assets/5.gif)
 
-成功调用该命令。
+ 
 
 ## 添加上随机获取句子能力
 
@@ -120,24 +133,24 @@ import '@logseq/libs'
 let statement = "hello";
 
 function getStatement(){
-	fetch('https://v1.hitokoto.cn')
-	.then(response => response.json())
-	.then(data => {
-		statement = data.hitokoto
-	})
-	.catch(console.error)
+    fetch('https://v1.hitokoto.cn')
+    .then(response => response.json())
+    .then(data => {
+        statement = data.hitokoto
+    })
+    .catch(console.error)
 }
 getStatement()
 
 async function main () {
-	logseq.Editor.registerSlashCommand('juzi', async () => {
-		await logseq.Editor.insertAtEditingCursor(
-			`#+BEGIN_QUOTE
-			${statement}
-			#+END_QUOTE`,
-		);
-	getStatement();
-	})
+    logseq.Editor.registerSlashCommand('juzi', async () => {
+        await logseq.Editor.insertAtEditingCursor(
+            `#+BEGIN_QUOTE
+            ${statement}
+            #+END_QUOTE`,
+        );
+    getStatement();
+    })
 }
 
 logseq.ready(main).catch(console.error)
@@ -145,7 +158,8 @@ logseq.ready(main).catch(console.error)
 
 重新`npm build`并`reload`插件。
 
+
+
+成功运行!
+
 ![](../.gitbook/assets/6.gif)
-
-
-
