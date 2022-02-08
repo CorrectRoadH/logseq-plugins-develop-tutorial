@@ -22,8 +22,10 @@ datascript是一种`匹配`查询的语言,我们从最简单的语句开始，�
 | 51   | :block/content | 微积分   |
 | 52   | :block/parent  | 50       |
 | 52   | :block/content | 线代     |
+| 53   | :block/parent  | 49       |
+| 53   | :block/content | 大学英语 |
 
-这个表在`Logseq`中看起来是什么样的呢？是这样。微积分和线代的父节点是大学数学。
+这个表在`Logseq`中看起来是什么样的呢？是这样。微积分和线代的父节点是大学数学。大学数学和大学英语同层级。
 
 ![](../.gitbook/assets/28.png)
 
