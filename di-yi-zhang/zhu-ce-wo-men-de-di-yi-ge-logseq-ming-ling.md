@@ -146,3 +146,6 @@ logseq.ready(main).catch(console.error)
 重新`npm build`并`reload`插件。
 
 ![](../.gitbook/assets/6.gif)
+
+
+

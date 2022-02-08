@@ -300,3 +300,59 @@ export const Table = React.forwardRef<HTMLDivElement>(({}, ref) => {
 ![](../.gitbook/assets/24.gif)
 
 现在就可以通过`esc`关闭窗口和`Enter`进行触发按扭了。
+
+
+
+### 拓展
+
+调整窗口位置的实现和逻辑：
+
+代码分析与解释：未完待续
+
+`logseq-plugin-heatmap`的实现
+
+```typescript
+function useIconPosition() {
+  const windowSize = useWindowSize();
+  return React.useMemo(() => {
+    let right = windowSize.width - 10;
+    let bottom = 20;
+    if (top?.document) {
+      const iconRect = top?.document
+        .querySelector(`.${triggerIconName}`)
+        ?.getBoundingClientRect();
+      if (iconRect) {
+        right = iconRect.right;
+        bottom = iconRect.bottom;
+      }
+    }
+    return { right, bottom };
+  }, [windowSize]);
+}
+```
+
+
+
+`logseq-emoji-picker`的实现
+
+```typescript
+  logseq.Editor.registerSlashCommand(
+    '😀 Emoji picker', async () => {
+      const {
+        left,
+        top,
+        rect,
+      } = await logseq.Editor.getEditingCursorPosition()
+      Object.assign(emojiPickerEl.style, {
+        top: top + rect.top + 'px',
+        left: left + rect.left + 'px',
+      })
+      logseq.showMainUI()
+
+      setTimeout(() => {
+        makePicker().showPicker(emojiPickerEl)
+      }, 100)
+    },
+  )
+```
+

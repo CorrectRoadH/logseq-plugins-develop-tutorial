@@ -292,3 +292,9 @@ async function main () {
 
 logseq.ready(main).catch(console.error)
 ```
+
+## 拓展
+
+在`onMacroRendererSlotted`中常见判断组件类型有：通过`type.startsWith`判断和通过`type !== `判断。他们的区别与优劣是什么？
+
+未完待续...
