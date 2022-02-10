@@ -33,6 +33,18 @@ datascript是一种`匹配`查询的语言,我们从最简单的语句开始，�
      [?e :block/parent 50]]
 ```
 
+ps：这是`datascript`的语法，在`logseq`中使用还需要加上特定的语法，例:
+
+```
+#+BEGIN_QUERY
+{:title "找到父节点为50的节点"
+    :query [:find ?e 
+    :where
+     [?e :block/parent 50]]
+}
+#+END_QUERY
+```
+
 `[?e :block/parent 50]`意思就是匹配所有`block`中`parent`是`50`的节点。在我们这里表里面，结果有两个，分别是`51`和`52`。那么这个`?e`就是`变量`，它的值来源于与`:block/parent 50`相匹配行的`e-id`，现在的`?e`的值是`51`、`52`。
 
 ![我logseq上微积分是72，线代是73](../.gitbook/assets/29.png)我的logseq中微积分是72， 线代是73。
@@ -89,15 +101,30 @@ datascript是一种`匹配`查询的语言,我们从最简单的语句开始，�
 
 ![](../.gitbook/assets/32.png)
 
-未完待续...
-
 ## 统计满足条件的`block`有多少
 
-未完待续...
+如果我们想通知一共有多少个`TODO`，而不是把他们列出来，我们应该使用` (count 变量名)`去替换`(pull )`。
+
+例：
+
+```
+ [:find (count ?e) 
+    :where
+     [?e :block/marker ?m]
+     [(contains? #{"TODO"} ?m)]]
+```
+
+33.png
+
+## 
 
 ## 在`Logseq`插件中使用
 
+`logseq`提供了`logseq.DB.datascriptQuery`去执行`datascript`语句。
+
 未完待续...
+
+
 
 ## Logseq block自带的属性
 

@@ -338,6 +338,28 @@ function useIconPosition() {
 }
 ```
 
+`useWindowSize`是`react-use`提供的`hook`，为我们提供当前窗口的大小。
+
+这里获得right、bottom的意义不必多说。
+
+```
+if (top?.document) {
+      const iconRect = top?.document
+        .querySelector(`.${triggerIconName}`)
+        ?.getBoundingClientRect();
+      if (iconRect) {
+        right = iconRect.right;
+        bottom = iconRect.bottom;
+      }
+    }
+```
+
+这段代码的意义是
+
+未完待续
+
+
+
 `logseq-emoji-picker`的实现
 
 ```typescript

@@ -6,8 +6,6 @@
 
 现在我们为`logseq`制做一个随机引用一个句子的`命令插件`。 我使用 `logseq-emoji-picker`项目为基础，修改制做我们的`juzi`插件。
 
- 
-
 ## 环境搭建
 
 `git clone https://github.com/logseq/logseq-plugin-samples.git`
@@ -107,21 +105,15 @@ logseq.ready(main).catch(console.error)
 
 然后我们在项目目录中运行`npm install && npm build`。把我们的插件从源码变成能运行的东西!
 
-
-
 然后在`logseq`中的`plugins`中导入这个插件(需要开启开发者模式)。
 
 ![](../.gitbook/assets/4.gif)
-
-
 
 **注意**但是`logseq 0.5.9`好像有一个bug，还需要重启logseq，命令才能加载到命令列表中。我重启一下`logseq`。
 
 现在可以成功触发命令了!
 
 ![](../.gitbook/assets/5.gif)
-
- 
 
 ## 添加上随机获取句子能力
 
@@ -157,8 +149,6 @@ logseq.ready(main).catch(console.error)
 ```
 
 重新`npm build`并`reload`插件。
-
-
 
 成功运行!
 
