@@ -122,9 +122,20 @@ ps：这是`datascript`的语法，在`logseq`中使用还需要加上特定的�
 
 `logseq`提供了`logseq.DB.datascriptQuery`去执行`datascript`语句。
 
-未完待续...
+比如当我们执行
 
+```typescript
+logseq.DB.datascriptQuery(`
+     [:find (pull ?e [*]) 
+    :where
+     [?e :block/marker ?m]
+     [(contains? #{"TODO"} ?m)]]
+`)
+```
 
+我们尝试执行这个命令并`console.log`出来看看：
+
+34。png
 
 ## Logseq block自带的属性
 

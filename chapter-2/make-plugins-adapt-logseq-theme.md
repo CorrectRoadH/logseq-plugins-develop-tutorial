@@ -8,8 +8,6 @@ logseq有`light`和`dark`两种主题模式，如果我们要让我们的插件�
 
 未完待续
 
-
-
 ### 在`logseq-plugin-template-react`下的实现方式
 
 这个手脚架自带了`windi CSS`，所以我们将用`windi CSS`实现。同时我们将参考`logseq-plugin-heatmap`的实现。

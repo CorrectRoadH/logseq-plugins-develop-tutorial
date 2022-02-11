@@ -382,3 +382,29 @@ if (top?.document) {
     },
   )
 ```
+
+`logseq.Editor.getEditingCursorPosition`获取当前光标所在位置的api。
+
+返回值示例：
+
+```json
+{
+    left: 0,
+    pos: 0,
+    rect: {
+        bottom: 211,
+        height: 25,
+        left: 88,
+        right: 747,
+        top: 186,
+        width: 659,
+        x: 88,
+        y: 186
+    },
+    top: 1
+}
+```
+
+与我们窗口有关的属性在`rect`之中。
+
+未完待续
