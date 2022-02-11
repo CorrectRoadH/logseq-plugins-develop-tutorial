@@ -1,4 +1,4 @@
-# datascript入门
+# Datascript入门
 
 ## datascript有什么用？
 
@@ -6,7 +6,7 @@
 
 ### 什么是匹配？
 
-datascript是一种`匹配`查询的语言,我们从最简单的语句开始，一步一步提高直到学会\`datascript`。
+datascript是一种`匹配`查询的语言,我们从最简单的语句开始，一步一步提高直到学会\`datascript\`。
 
 什么是匹配呢？我们设想`Logseq`的数据库是长这样的
 
@@ -59,7 +59,7 @@ ps：这是`datascript`的语法，在`logseq`中使用还需要加上特定的�
 
 ![](../.gitbook/assets/30.png)
 
-### 
+###
 
 ### 多个匹配条件
 
@@ -103,7 +103,7 @@ ps：这是`datascript`的语法，在`logseq`中使用还需要加上特定的�
 
 ## 统计满足条件的`block`有多少
 
-如果我们想通知一共有多少个`TODO`，而不是把他们列出来，我们应该使用` (count 变量名)`去替换`(pull )`。
+如果我们想通知一共有多少个`TODO`，而不是把他们列出来，我们应该使用 `(count 变量名)`去替换`(pull )`。
 
 例：
 
@@ -114,9 +114,7 @@ ps：这是`datascript`的语法，在`logseq`中使用还需要加上特定的�
      [(contains? #{"TODO"} ?m)]]
 ```
 
-33.png
-
-## 
+![](../.gitbook/assets/33.png)
 
 ## 在`Logseq`插件中使用
 
@@ -126,7 +124,7 @@ ps：这是`datascript`的语法，在`logseq`中使用还需要加上特定的�
 
 ```typescript
 logseq.DB.datascriptQuery(`
-     [:find (pull ?e [*]) 
+     [:find (pull ?e [*]) 
     :where
      [?e :block/marker ?m]
      [(contains? #{"TODO"} ?m)]]
@@ -135,7 +133,7 @@ logseq.DB.datascriptQuery(`
 
 我们尝试执行这个命令并`console.log`出来看看：
 
-34。png
+![](../.gitbook/assets/34.png)
 
 ## Logseq block自带的属性
 
