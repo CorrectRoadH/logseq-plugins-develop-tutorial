@@ -36,6 +36,10 @@
 
 制作一个表格生成器 (已完成)
 
+为logseq插件制作设置项(等[#4035](https://github.com/logseq/logseq/pull/4035)这个pr被合并了再写)
+
+
+
 **第二章**
 
 适配logseq主题 (未完成)

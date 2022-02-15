@@ -59,7 +59,7 @@ ps：这是`datascript`的语法，在`logseq`中使用还需要加上特定的�
 
 ![](../.gitbook/assets/30.png)
 
-###
+### 
 
 ### 多个匹配条件
 
@@ -116,6 +116,32 @@ ps：这是`datascript`的语法，在`logseq`中使用还需要加上特定的�
 
 ![](../.gitbook/assets/33.png)
 
+## 更多限制条件
+
+在`logseq`中我们还可以使用更多的限制条件去筛选`block`，比如`日期`等等。
+
+未完待续
+
+```
+#+BEGIN_QUERY
+{:title "统计今天的TODO任务数"
+    :query  [:find (count ?e) 
+    :in  $ ?start ?today
+    :where
+     [?e :block/marker ?m]
+     [(contains? #{"TODO"} ?m)]
+     [?p :page/journal-day ?d]
+     [(>= ?d ?start)]
+     [(<= ?d ?today)]]
+    :inputs [:1d :today]
+}
+#+END_QUERY
+```
+
+
+
+
+
 ## 在`Logseq`插件中使用
 
 `logseq`提供了`logseq.DB.datascriptQuery`去执行`datascript`语句。
@@ -134,6 +160,8 @@ logseq.DB.datascriptQuery(`
 我们尝试执行这个命令并`console.log`出来看看：
 
 ![](../.gitbook/assets/34.png)
+
+## 
 
 ## Logseq block自带的属性
 
