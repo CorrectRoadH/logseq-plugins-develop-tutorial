@@ -116,31 +116,39 @@ ps：这是`datascript`的语法，在`logseq`中使用还需要加上特定的�
 
 ![](../.gitbook/assets/33.png)
 
+## 
+
 ## 更多限制条件
 
 在`logseq`中我们还可以使用更多的限制条件去筛选`block`，比如`日期`等等。
 
-未完待续
+在`:input [:today :today]`这两个参数传给`?start`和`?end`两个变量。然后`     [?p :page/journal-day ?d]`则把日期赋予`?d`变量。
+
+最后再把`?d`与`?start`和`?end`进去对比。
 
 ```
 #+BEGIN_QUERY
-{:title "统计今天的TODO任务数"
+{:title "找出今天的TODO任务数"
     :query  [:find (count ?e) 
-    :in  $ ?start ?today
+    :in  $ ?start ?end
     :where
      [?e :block/marker ?m]
      [(contains? #{"TODO"} ?m)]
      [?p :page/journal-day ?d]
      [(>= ?d ?start)]
-     [(<= ?d ?today)]]
-    :inputs [:1d :today]
+     [(<= ?d ?end)]]
+    :inputs [:today :today]
 }
 #+END_QUERY
 ```
 
+35.png
 
 
 
+可以传入`:inputs`日期的值非常丰富可以自由组合，比如`:today`、`:7d`、`:56d`、`:7d-after`等等。
+
+ 
 
 ## 在`Logseq`插件中使用
 
