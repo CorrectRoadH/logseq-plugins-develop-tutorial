@@ -9,6 +9,7 @@
 * [为logseq添加内容组件](chapter-1/wei-logseq-tian-jia-ke-shi-zu-jian.md)
 * [制作一个toolbar仪表盘](chapter-1/make-a-toolbar-dashboard.md)
 * [制作一个表格生成器](chapter-1/make-markdown-table-creator.md)
+* [为logseq插件制作设置项](chapter-1/wei-logseq-cha-jian-zhi-zuo-she-zhi-xiang.md)
 
 ## 第二章 <a href="#chapter-2" id="chapter-2"></a>
 
