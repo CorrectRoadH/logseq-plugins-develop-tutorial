@@ -17,4 +17,5 @@
 
 ## 第三章 <a href="#chapter-3" id="chapter-3"></a>
 
+* [别人的设计：logseq-plugin-tabs为例](chapter-3/bie-ren-de-she-ji-logseqplugintabs-wei-li.md)
 * [发布你的logseq插件到markplace](chapter-3/publish-your-plugins-to-markplace.md)
