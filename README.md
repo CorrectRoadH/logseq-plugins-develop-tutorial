@@ -36,15 +36,13 @@
 
 制作一个表格生成器 (已完成)
 
-为logseq插件制作设置项(等[#4035](https://github.com/logseq/logseq/pull/4035)这个pr被合并了再写)
-
-
+为logseq插件制作设置项(未完成)
 
 **第二章**
 
 适配logseq主题 (未完成)
 
-datascript入门 (未完成)
+datascript入门 (已完成)
 
 大量数量加载时使用懒加载 (还没写)
 
@@ -56,7 +54,7 @@ datascript入门 (未完成)
 
 别人的设计：`logseq-plugin-heatmap`为例(还没写)
 
-别人的设计：`logseq-plugin-tabs`为例(还没写)
+别人的设计：`logseq-plugin-tabs`为例(未完成)
 
 发布你的logseq插件到markplace (未完成)
 
