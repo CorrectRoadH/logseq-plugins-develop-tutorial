@@ -6,7 +6,7 @@ fork这个repo。
 
 然后在git到本地，在`packages`文件夹下建立你的`plugins`名的文件夹，在该文件夹下面建立`icon.png`文件和`manifest.json`文件。
 
-文件内容如下：
+文件内容类似下面：
 
 ```json
 {

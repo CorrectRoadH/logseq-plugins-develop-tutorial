@@ -165,7 +165,7 @@ logseq.DB.datascriptQuery(`
 
 ![](../.gitbook/assets/34.png)
 
-### 
+ 
 
 ### 在插件中使用条件限制
 
@@ -175,7 +175,7 @@ logseq.DB.datascriptQuery(`
 
 只要我们了解相应的格式就行。如日期格式应该满足`yyyyMMdd`，如果`[(>= ?d 20220218)]`
 
-## 
+
 
 ## Logseq block自带的属性
 
