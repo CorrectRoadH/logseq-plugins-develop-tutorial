@@ -10,7 +10,43 @@ logseq有`light`和`dark`两种主题模式，如果我们要让我们的插件�
 
 ### 在`无框架`下的实现方式
 
-未完待续
+我们在之前之前写的[`renderer`组件](https://correctroad.gitbook.io/logseq-plugins-in-action/chapter-1/wei-logseq-tian-jia-ke-shi-zu-jian)上进行修改让在`dark`模式下显示红色，`light`模式下显示黑色。
+
+修改`index.ts`
+
+```typescript
+  logseq.App.onMacroRendererSlotted(({ slot, payload} ) => {
+    const [type,name,color] = payload.arguments
+
+    // 这里是新增的代码
+    const theme = top?.document
+      .querySelector("html")
+      ?.getAttribute("data-theme") as typeof mode) ??
+      (matchMedia("prefers-color-scheme: dark").matches ? "dark" : "light");
+		//
+    
+    if (type !== ':hello') return
+    logseq.provideUI({
+      key: 'hello',
+      reset: true,
+      slot, template: `
+      <div style="background-color: ${ theme === "dark"?"red":"green" }" class="hello"
+      data-block-uuid="${payload.uuid}"
+      data-on-click="msg" >
+        hello! ${name}
+      </div>  
+     `,
+    })
+  })
+```
+
+这段新增的代码来自`logseq-plugin-heatmap`的实现。我们这里直接借用。
+
+修改下面组件的代码，让他判断当前的`theme`去选择`css`颜色。
+
+现在看看效果
+
+36.png 37.png
 
 
 

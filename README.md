@@ -40,7 +40,7 @@
 
 **第二章**
 
-适配logseq主题 (未完成)
+适配logseq主题 (已完成)
 
 datascript入门 (已完成)
 
