@@ -6,19 +6,48 @@
 
 ## 起步
 
-未完待续
+在`logseq`中，`logseq.settings`api为我们提供了从插件所属的`json`文件中读取内容的功能。而`logseq.updateSettings`则为我们提供了创建或修改插件`json`的功能。
+
+我们通过这两个api就可以完成大部分的功能。
+
+这次我们来创建一个插件。这个插件从用户设置中读取出`特定的内容`。我们通过`命令`往`logseq`中插入我们的`特定的内容`内容。
 
 
 
-## 插件的设置
+## 从json读取设置项
 
-未完待续
+#### 往json设置默认的值。
+
+我们用之前`随机句子`的插件加一点修改
+
+main.ts
+
+```typescript
+  if(logseq.settings.template === undefined){ // 如果插件设置项里没有template。既可以认为第一次打开插件。这里往里面写配置项
+    logseq.updateSettings({
+      template:"hello",
+    });
+  }
+	
+```
+
+**注意：我在`0.6.1`使用时，**`logseq.updateSettings`有时重载插件是没有生效的。如果出现这种情况，请重启`logseq`。重启第一次加载插件会为`logseq.updateSettings`生效。
+
+#### 从json读取值
+
+main.ts
+
+```typescript
+  // cosnt { template }= logseq.settings;
+  // 这里不能用解构语句。因为没有babel转义js的新语法
+  const template = logseq.settings.template; // 从配置项中读取
+  console.log(logseq.settings);
+  console.log(logseq.settings.template);
+```
 
 
 
-### 从json读取设置项
-
-
+图38
 
 ### 为设置项制作UI界面
 
