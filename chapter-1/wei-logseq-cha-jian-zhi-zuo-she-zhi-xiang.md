@@ -12,8 +12,6 @@
 
 这次我们来创建一个插件。这个插件从用户设置中读取出`特定的内容`。我们通过`命令`往`logseq`中插入我们的`特定的内容`内容。
 
-
-
 ## 从json读取设置项
 
 #### 往json设置默认的值。
@@ -45,9 +43,6 @@ main.ts
   console.log(logseq.settings.template);
 ```
 
-
-
-图38
+![](../.gitbook/assets/38.png)
 
 ### 为设置项制作UI界面
-
