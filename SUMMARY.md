@@ -6,10 +6,10 @@
 
 * [搭建开发环境](chapter-1/create-develop-environment.md)
 * [一个随机句子插件](chapter-1/a-random-statement-plugins.md)
-* [为logseq添加内容组件](chapter-1/wei-logseq-tian-jia-ke-shi-zu-jian.md)
+* [为logseq添加内容组件](chapter-1/add-renderer-to-logseq.md)
 * [制作一个toolbar仪表盘](chapter-1/make-a-toolbar-dashboard.md)
 * [制作一个表格生成器](chapter-1/make-markdown-table-creator.md)
-* [为logseq插件制作设置项](chapter-1/wei-logseq-cha-jian-zhi-zuo-she-zhi-xiang.md)
+* [为logseq插件制作设置项](chapter-1/make-logseq-plugins-support-settings.md)
 
 ## 第二章 <a href="#chapter-2" id="chapter-2"></a>
 
@@ -20,3 +20,4 @@
 
 * [别人的设计：logseq-plugin-tabs为例](chapter-3/bie-ren-de-she-ji-logseqplugintabs-wei-li.md)
 * [发布你的logseq插件到markplace](chapter-3/publish-your-plugins-to-markplace.md)
+* [后记](chapter-3/Finish.md)
