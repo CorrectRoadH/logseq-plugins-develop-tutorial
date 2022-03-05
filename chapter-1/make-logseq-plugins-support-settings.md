@@ -45,6 +45,113 @@ main.ts
 
 ![](../.gitbook/assets/38.png)
 
-### 为设置项制作UI界面
+### 图形化的设置面板
 
-未完待续
+在`logseq/lib`有`useSettingsSchema`api为我们通过`SettingSchemaDesc`类型的数组向`logseq`注册我们插件所需要的设置项的信息。然后`logseq`就可以自动的生成图形化的设置面板。
+
+
+
+`SettingSchemaDesc`类型有哪些属性可以在[这里](https://logseq.github.io/plugins/modules.html#SettingSchemaDesc)看到。它的源码如下
+
+```typescript
+export type SettingSchemaDesc = {
+  key: string
+  type: 'string' | 'number' | 'boolean' | 'enum' | 'object'
+  default: string | number | boolean | Array<any> | object | null
+  title: string
+  description: string // 支持md语法
+  inputAs?: 'color' | 'date' | 'datetime-local' | 'range'
+  enumChoices?: Array<string>
+  enumPicker?: 'select' | 'radio' | 'checkbox' // 默认是 select
+}
+```
+
+我们建立一个Arrary：
+
+```typescript
+  const schema:Array<SettingSchemaDesc> = [
+    {
+      key:"template",
+      type:"string",
+      default:"hello",
+      title:"模板",
+      description:"插入模板",
+    },
+    {
+      key:"isShow",
+      type:"boolean",
+      default:true,
+      title:"欢迎提示",
+      description:"是否显示欢迎提示",
+    } 
+  ];
+```
+
+
+
+```typescript
+  logseq.useSettingsSchema(schema)
+```
+
+效果如下
+
+39.gif
+
+
+
+完整代码如下：
+
+`index.ts`
+
+```typescript
+import '@logseq/libs'
+
+async function main () {
+
+  console.log(logseq.settings);
+  if(logseq.settings.template === undefined){
+    logseq.updateSettings({
+      template:"hello",
+      isShow:true // 这里加了一个设置项
+    });
+  }
+
+  //cosnt { template }= logseq.settings;
+  // 这里不能用解构语句。因为没有babel转义js新语法
+  const template = logseq.settings.template;
+
+  if(logseq.settings.isShow){
+    logseq.App.showMsg('hello, Logseqer! :)')
+  }
+
+  const schema:Array<SettingSchemaDesc> = [
+    {
+      key:"template",
+      type:"string",
+      default:"hello",
+      title:"模板",
+      description:"插入模板",
+    },
+    {
+      key:"isShow",
+      type:"boolean",
+      default:true,
+      title:"欢迎提示",
+      description:"是否显示欢迎提示",
+    } 
+  ];
+  logseq.useSettingsSchema(schema)
+
+  logseq.Editor.registerSlashCommand('statement', async () => {
+    await logseq.Editor.insertAtEditingCursor(
+      `#+BEGIN_QUOTE
+      ${template}
+      #+END_QUOTE`,
+    );
+    getStatement();
+  })
+
+}
+logseq.ready(main).catch(console.error)
+```
+
