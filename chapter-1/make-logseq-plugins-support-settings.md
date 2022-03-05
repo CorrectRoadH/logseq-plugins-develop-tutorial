@@ -49,8 +49,6 @@ main.ts
 
 在`logseq/lib`有`useSettingsSchema`api为我们通过`SettingSchemaDesc`类型的数组向`logseq`注册我们插件所需要的设置项的信息。然后`logseq`就可以自动的生成图形化的设置面板。
 
-
-
 `SettingSchemaDesc`类型有哪些属性可以在[这里](https://logseq.github.io/plugins/modules.html#SettingSchemaDesc)看到。它的源码如下
 
 ```typescript
@@ -87,17 +85,13 @@ export type SettingSchemaDesc = {
   ];
 ```
 
-
-
 ```typescript
   logseq.useSettingsSchema(schema)
 ```
 
 效果如下
 
-39.gif
-
-
+![](../.gitbook/assets/39.gif)
 
 完整代码如下：
 
@@ -154,4 +148,3 @@ async function main () {
 }
 logseq.ready(main).catch(console.error)
 ```
-
