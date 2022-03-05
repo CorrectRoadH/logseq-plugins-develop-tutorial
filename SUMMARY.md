@@ -10,6 +10,7 @@
 * [制作一个toolbar仪表盘](chapter-1/make-a-toolbar-dashboard.md)
 * [制作一个表格生成器](chapter-1/make-markdown-table-creator.md)
 * [为logseq插件制作设置项](chapter-1/make-logseq-plugins-support-settings.md)
+* [注册Block选项菜单](chapter-1/register-block-context-menuItem.md)
 
 ## 第二章 <a href="#chapter-2" id="chapter-2"></a>
 
