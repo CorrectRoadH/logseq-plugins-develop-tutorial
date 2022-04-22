@@ -52,13 +52,11 @@ import '@logseq/libs'
  */
 async function main () {
   logseq.Editor.registerBlockContextMenuItem("Favorite", async (e) => {
-    // logseq.Editor.moveBlock(e.uuid, BlockIdentity):
     const block = await logseq.Editor.getBlock(e.uuid);
-    console.log(block);  
-        let content = block.content;
-        logseq.Editor.updateBlock(e.uuid, 
-          "#favorite " + block.content
-          );
+    let content = block.content;
+    logseq.Editor.updateBlock(e.uuid, 
+        "#favorite " + block.content
+    );
   });
 }
 
