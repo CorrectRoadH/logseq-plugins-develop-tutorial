@@ -64,7 +64,7 @@
 
 在该目录下运行`npm install`安装基本依赖
 
-## 
+ 
 
 ## 注册命令
 
@@ -103,7 +103,7 @@ async function main () {
 logseq.ready(main).catch(console.error)
 ```
 
-然后我们在项目目录中运行`npm install && npm build`。把我们的插件从源码变成能运行的东西!
+然后我们在项目目录中运行`npm install && npm run build`。把我们的插件从源码变成能运行的东西!
 
 然后在`logseq`中的`plugins`中导入这个插件(需要开启开发者模式)。
 
@@ -148,7 +148,7 @@ async function main () {
 logseq.ready(main).catch(console.error)
 ```
 
-重新`npm build`并`reload`插件。
+重新`npm run build`并`reload`插件。
 
 成功运行!
 
