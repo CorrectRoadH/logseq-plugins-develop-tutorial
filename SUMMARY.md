@@ -16,7 +16,9 @@
 
 * [适配logseq主题](chapter-2/make-plugins-adapt-logseq-theme.md)
 * [Datascript入门](chapter-2/get-started-datascript.md)
-
+* [懒加载与异常处理](hapter-2/lazy-load.md)
+  
+  
 ## 第三章 <a href="#chapter-3" id="chapter-3"></a>
 
 * [别人的设计：logseq-plugin-tabs为例](chapter-3/bie-ren-de-she-ji-logseqplugintabs-wei-li.md)
