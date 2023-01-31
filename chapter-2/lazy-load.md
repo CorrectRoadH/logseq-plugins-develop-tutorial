@@ -34,7 +34,7 @@ const MarkdownPreview = lazy(() => delayForDemo(import('./MarkdownPreview.js')))
 </Suspense>
 ```
 
-![](../.gitbook/assets/43.gif)
+![](../.gitbook/assets/44.gif)
 
 ## 异常处理
 与`Lazy`和`Suspense`对比，用起来挺像的`ErrorBoundary`，这个可以为我们在组件出现错误时，提供另一些东西，比如显示错误提示等等。
