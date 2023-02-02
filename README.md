@@ -73,7 +73,11 @@ Chapter1 - 制作一个toolbar插件 - code/logseq-dashboard
 
 
 致谢名单:
+
 以各种方法参与(主动或被动)到本书的完成之中
+
 @pengx17
+
 @yangyangnote 
+
 @xiang578
