@@ -298,3 +298,7 @@ export const Dashboard = React.forwardRef<HTMLDivElement>(({}, ref) => {
 ![](../.gitbook/assets/20.png)
 
 
+
+> 本文代码位置
+> https://github.com/CorrectRoadH/logseq-plugins-develop-tutorial/tree/main/code/logseq-dashboard
+> 

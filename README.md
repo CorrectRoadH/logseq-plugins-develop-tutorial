@@ -58,6 +58,10 @@ datascript入门 (已完成)
 
 发布你的logseq插件到markplace (未完成)
 
+## 代码
+
+Chapter1 - 制作一个toolbar插件 - code/logseq-dashboard
+
 ## todo
 
 * [ ] 更新截图为记录按键的截图
@@ -66,6 +70,7 @@ datascript入门 (已完成)
 * [ ] 提供英语版本
 * [ ] 更新关于[PR#4828](https://github.com/logseq/logseq/pull/4828)的内容
 * [x] 修改文件名
+
 
 致谢名单:
 以各种方法参与(主动或被动)到本书的完成之中
