@@ -127,7 +127,7 @@ export const Dashboard = React.forwardRef<HTMLDivElement>(({}, ref) => {
 });
 ```
 
-`dashborad.css`
+`dashboard.css`
 
 ```css
 .dashboard-root {
@@ -154,16 +154,17 @@ import { Dashboard } from "./dashboard";
 function App() {
   const innerRef = useRef<HTMLDivElement>(null);
   const visible = useAppVisible();
+
   if (visible) {
     return (
       <main
-        className="fixed inset-0 flex items-center justify-center"
-        onClick={(e) => {
-          if (!innerRef.current?.contains(e.target as any)) {
-            window.logseq.hideMainUI();
-          }
-        }}
-      >
+          className="fixed inset-0 flex items-center justify-center"
+          onClick={(e) => {
+            if (!innerRef.current?.contains(e.target as any)) {
+              window.logseq.hideMainUI();
+            }
+          }}
+        >
         <Dashboard ref={innerRef}  />
       </main>
     );
@@ -204,6 +205,7 @@ export default App;
 ```
 
 修改`dashboard.tsx`
+当然，这里我们引入了一个新的依赖，记得`pnpm install react-use`
 
 ```typescript
 import React from "react";
@@ -252,21 +254,36 @@ export const Dashboard = React.forwardRef<HTMLDivElement>(({}, ref) => {
 修改`dashboard.tsx`
 
 ```typescript
+import React,{useEffect} from "react";
+import "./dashboard.css"
+import { useWindowSize } from "react-use";
+
+function useIconPosition() {
+    const windowSize = useWindowSize();
+    return React.useMemo(() => {
+        const right = windowSize.width - 10;
+        const bottom = 20;
+        return { right, bottom };
+    }, [windowSize]);
+}
+
+// eslint-disable-next-line react/display-name
 export const Dashboard = React.forwardRef<HTMLDivElement>(({}, ref) => {
     const { bottom, right } = useIconPosition();
 
     const [pageCount, setPageCount] = React.useState(0);
     useEffect(()=>{
-        window.logseq.Editor.getAllPages().then(pages=>{
-            setPageCount(pages.length);
-        })
+        window.logseq.Editor.getAllPages().then(pages => {
+            if (pages) {
+                setPageCount(pages.length);
+                }
+            });
     },[])
-
     return(
         <div
             ref={ref}
             className="dashboard-root"
-             style={{ left: right - 400, top: bottom + 20 }}
+             style={{ left: right - 400, top: bottom + 80 }} // 这里80就是dashboard的高度。
             >
             <div className="center">
                 <h1> 一共有 {pageCount} 个页面 </h1>
@@ -279,3 +296,5 @@ export const Dashboard = React.forwardRef<HTMLDivElement>(({}, ref) => {
 现在当我们点成`UIItem`，我们就能看到我们一共拥有多少页了。
 
 ![](../.gitbook/assets/20.png)
+
+
