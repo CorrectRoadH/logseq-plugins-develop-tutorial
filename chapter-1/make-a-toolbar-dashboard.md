@@ -245,7 +245,7 @@ export const Dashboard = React.forwardRef<HTMLDivElement>(({}, ref) => {
 
 现在的效果：
 
-![](<../.gitbook/assets/19 (1).gif>)
+![](<../.gitbook/assets/19.gif>)
 
 ### 页数内容
 
