@@ -1,0 +1,12 @@
+.dashboard-root {
+    position: absolute;
+    background-color: #e5e7eb;
+    display: flex;
+    width: 300px;
+    height: 80px;
+}
+
+.center{
+    display: flex;
+    margin: auto;
+}
