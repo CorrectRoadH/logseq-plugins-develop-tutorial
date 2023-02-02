@@ -116,7 +116,20 @@ ps：这是`datascript`的语法，在`logseq`中使用还需要加上特定的�
 
 ![](../.gitbook/assets/33.png)
 
-##
+> note
+> 如果想在console中执行datascript可以使用
+
+```javascript
+logseq.api.datascript_query(`
+     [:find (pull ?e [*])
+    :where
+     [?e :block/marker ?m]
+     [(contains? #{"TODO"} ?m)]]
+`)
+```
+
+![](../.gitbook/assets/45.png)
+
 
 ## 更多限制条件
 

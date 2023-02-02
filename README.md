@@ -66,3 +66,9 @@ datascript入门 (已完成)
 * [ ] 提供英语版本
 * [ ] 更新关于[PR#4828](https://github.com/logseq/logseq/pull/4828)的内容
 * [x] 修改文件名
+
+致谢名单:
+以各种方法参与(主动或被动)到本书的完成之中
+@pengx17
+@yangyangnote 
+@xiang578
